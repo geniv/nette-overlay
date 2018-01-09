@@ -32,6 +32,7 @@ class Overlay extends Control
         $this->templatePath = [
             'begin' => __DIR__ . '/OverlayBegin.latte',
             'end'   => __DIR__ . '/OverlayEnd.latte',
+            'link'  => __DIR__ . '/OverlayLink.latte',
         ];
     }
 
@@ -41,13 +42,15 @@ class Overlay extends Control
      *
      * @param $pathBegin
      * @param $pathEnd
+     * @param $pathLink
      * @return $this
      */
-    public function setTemplatePath($pathBegin, $pathEnd)
+    public function setTemplatePath($pathBegin, $pathEnd, $pathLink)
     {
         $this->templatePath = [
             'begin' => $pathBegin,
             'end'   => $pathEnd,
+            'link'  => $pathLink,
         ];
         return $this;
     }
@@ -75,6 +78,19 @@ class Overlay extends Control
 
         $template->setTranslator($this->translator);
         $template->setFile($this->templatePath['end']);
+        $template->render();
+    }
+
+
+    /**
+     * Render link.
+     */
+    public function renderLink()
+    {
+        $template = $this->getTemplate();
+
+        $template->setTranslator($this->translator);
+        $template->setFile($this->templatePath['link']);
         $template->render();
     }
 }

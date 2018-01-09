@@ -36,7 +36,11 @@ protected function createComponentOverlay(Overlay $overlay): Overlay
 
 usage:
 ```latte
-{control overlay:begin}
+<a href="#" class="nette-overlay-open" data-specific="custom-layer-1">Open custom layer #1</a>
+
+...
+{control overlay:begin 'custom-layer-1'}
+{control overlay:begin 'custom-layer-1', ''}
 content
 {control overlay:end}
 ```

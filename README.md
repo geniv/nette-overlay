@@ -35,8 +35,28 @@ protected function createComponentOverlay(Overlay $overlay): Overlay
 ```
 
 usage:
+
+_data-specific_ in href `custom-layer-1` correspond name by in `{control overlay:begin ...`
 ```latte
-{control overlay:begin}
+<a href="#" class="nette-overlay-open" data-specific="custom-layer-1">Open custom layer #1</a>
+...
+{control overlay:begin 'custom-layer-1'}
+or
+{control overlay:begin 'custom-layer-1', 'custom-layer-class'}
 content
 {control overlay:end}
+```
+
+or extreme usage
+```php
+protected function createComponentOverlay1(Overlay $overlay): Overlay
+{
+    $overlay = clone $overlay;
+    //$overlay->setTemplatePath('','');
+    return $overlay;
+}
+```
+and latte:
+```latte
+{control overlay1:begin 'custom-layer-2'}form{control overlay1:end}
 ```

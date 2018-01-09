@@ -1,123 +1,149 @@
-@keyframes nette-overlay-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
 
-@keyframes nette-overlay-out {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
+$nette-overlay-on-speed:            200ms !default;
+$nette-overlay-out-speed:           200ms !default;
 
-.nette-overlay {
-    display: none;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    background-color: rgba($black, 0.5);
-    text-align: center;
-    font-size: 0;
-    &:before {
-        content: "";
-        display: inline-block;
-        vertical-align: middle;
-        width: 0;
-        height: 100%;
-    }
-    &.on {
-        display: block;
-        opacity: 0;
-        animation: nette-overlay-in 200ms cubic-bezier(0.4, 0, 1, 1) 0s 1 forwards;
-        overflow-y: auto;
-    }
-    &.out {
-        display: block;
-        opacity: 1;
-        animation: nette-overlay-out 200ms cubic-bezier(0.4, 0, 1, 1) 0s 1 forwards;
-        &.end {
-            display: none;
+$nette-overlay-on-bezier:           cubic-bezier(0.4, 0, 1, 1) !default;
+$nette-overlay-out-bezier:          cubic-bezier(0.4, 0, 1, 1) !default;
+
+$nette-overlay-backdrop-bg:         rgba($black, 0.5) !default;
+$nette-overlay-inner-bg:            $white !default;
+
+$nette-overlay-z-wrap:              1000 !default;
+$nette-overlay-z-inner:             1100 !default;
+$nette-overlay-z-backdrop:          1050 !default;
+$nette-overlay-z-backdrop-after:    1060 !default;
+$nette-overlay-z-close:             1200 !default;
+
+$nette-overlay-structure: (
+    default,
+    content-styles,
+    size-styles,
+) !default;
+
+
+@if index($nette-overlay-structure, default) {
+    @keyframes nette-overlay-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
         }
     }
-    &-inner {
-        display: inline-block;
-        width: 100%;
-        max-width: 510px;
-        margin: 50px 0;
-        padding: 60px 60px 40px 65px;
-        position: relative;
-        z-index: 1100;
-        text-align: left;
-        vertical-align: middle;
-        font-size: 16px;
-        background-color: $white;
-        h3 {
-            padding-top: 0;
-            padding-bottom: 5px;
-            font-size: 26px;
-            font-weight: 700;
-            line-height: 1.08;
-            letter-spacing: normal;
-            color: $black;
+    @keyframes nette-overlay-out {
+        from {
+            opacity: 1;
         }
-        p {
-            padding-bottom: 20px;
-            font-size: 16px;
-            line-height: 1.65;
-            letter-spacing: -0.2px;
+        to {
+            opacity: 0;
         }
     }
-    &-backdrop {
-        display: block;
+    .nette-overlay {
+        display: none;
         width: 100%;
         height: 100%;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
-        z-index: 1050;
-        &:after {
+        z-index: $nette-overlay-z-wrap;
+        background-color: $nette-overlay-backdrop-bg;
+        text-align: center;
+        font-size: 0;
+        &:before {
             content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: 0;
+            height: 100%;
+        }
+        &.on {
+            display: block;
+            opacity: 0;
+            animation: nette-overlay-in $nette-overlay-on-speed $nette-overlay-on-bezier 0s 1 forwards;
+            overflow-y: auto;
+        }
+        &.out {
+            display: block;
+            opacity: 1;
+            animation: nette-overlay-out $nette-overlay-out-speed $nette-overlay-out-bezier 0s 1 forwards;
+            &.end {
+                display: none;
+            }
+        }
+        &-inner {
+            display: inline-block;
+            width: 100%;
+            @if index($nette-overlay-structure, size-styles) {
+                max-width: 600px;
+                margin: 50px 0;
+                padding: 40px;
+            }
+            position: relative;
+            z-index: $nette-overlay-z-inner;
+            text-align: left;
+            vertical-align: middle;
+            font-size: rem(16);
+            background-color: $nette-overlay-inner-bg;
+            @if index($nette-overlay-structure, content-styles) {
+                h3 {
+                    padding-top: 0;
+                    padding-bottom: 5px;
+                    font-size: rem(26);
+                    font-weight: 700;
+                    line-height: 1.08;
+                    letter-spacing: normal;
+                    color: $black;
+                }
+                p {
+                    padding-bottom: 20px;
+                    font-size: rem(16);
+                    line-height: 1.65;
+                    letter-spacing: -0.2px;
+                }
+            }
+        }
+        &-backdrop {
             display: block;
             width: 100%;
             height: 100%;
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
-            z-index: 1060;
+            z-index: $nette-overlay-z-backdrop;
+            &:after {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: $nette-overlay-z-backdrop-after;
+            }
         }
-    }
-    &-close {
-        display: block;
-        width: 33px;
-        height: 33px;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        z-index: 1300;
-        svg {
-            fill: $black;
-            fill-opacity: 0.38;
-        }
-        &:hover {
+        &-close {
+            display: block;
+            width: 33px;
+            height: 33px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: $nette-overlay-z-close;
             svg {
                 fill: $black;
-                fill-opacity: 1;
+                fill-opacity: 0.38;
+            }
+            &:hover {
+                svg {
+                    fill: $black;
+                    fill-opacity: 1;
+                }
             }
         }
     }
-}
-
-body {
-    &.nette-overlay-on {
-        overflow: hidden;
+    body {
+        &.nette-overlay-on {
+            overflow: hidden;
+        }
     }
 }

@@ -8,6 +8,10 @@ $nette-overlay-out-bezier:          cubic-bezier(0.4, 0, 1, 1) !default;
 $nette-overlay-backdrop-bg:         rgba($black, 0.5) !default;
 $nette-overlay-inner-bg:            $white !default;
 
+$nette-overlay-inner-max-width:     600px !default;
+$nette-overlay-inner-margin:        50px 0 !default;
+$nette-overlay-inner-padding:       40px !default;
+
 $nette-overlay-z-wrap:              1000 !default;
 $nette-overlay-z-inner:             1100 !default;
 $nette-overlay-z-backdrop:          1050 !default;
@@ -74,9 +78,9 @@ $nette-overlay-structure: (
             display: inline-block;
             width: 100%;
             @if index($nette-overlay-structure, size-styles) {
-                max-width: 600px;
-                margin: 50px 0;
-                padding: 40px;
+                max-width: $nette-overlay-inner-max-width;
+                margin: $nette-overlay-inner-margin;
+                padding: $nette-overlay-inner-padding;
             }
             position: relative;
             z-index: $nette-overlay-z-inner;

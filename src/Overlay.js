@@ -5,7 +5,7 @@ $(document).ready(function () {
         var specificNetteOverlay = $(this).data("specific");
         $("body").addClass("nette-overlay--shown");
         $(".nette-overlay[data-specific='" + specificNetteOverlay + "']").addClass("nette-overlay--on");
-        $(".nette-overlay.out[data-specific='" + specificNetteOverlay + "']").removeClass("nette-overlay--out nette-overlay--end");
+        $(".nette-overlay.nette-overlay--out[data-specific='" + specificNetteOverlay + "']").removeClass("nette-overlay--out nette-overlay--end");
 
         if ($(".nette-overlay[data-specific='" + specificNetteOverlay + "'] form")[0]) {
             $(".nette-overlay[data-specific='" + specificNetteOverlay + "'] form").find("input[type='text']").first().focus();

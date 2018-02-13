@@ -135,6 +135,7 @@ $nette-overlay-structure: (
             width: $nette-overlay-close-width;
             height: $nette-overlay-close-height;
             svg {
+                display: block;
                 fill: $nette-overlay-close-fill;
                 fill-opacity: $nette-overlay-close-fill-opacity;
             }

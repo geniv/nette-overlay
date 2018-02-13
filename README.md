@@ -38,11 +38,11 @@ usage:
 
 _data-specific_ in href `custom-layer-1` correspond name by in `{control overlay:begin ...`
 ```latte
-<a href="#" class="nette-overlay-open" data-specific="custom-layer-1">Open custom layer #1</a>
+<a href="#" class="nette-overlay__open" data-specific="custom-layer-1">Open custom layer #1</a>
 ...
 {control overlay:begin 'custom-layer-1'}
 or
-{control overlay:begin 'custom-layer-1', 'custom-layer-class'}
+{control overlay:begin 'custom-layer-1', 'class-modifier'}
 content
 {control overlay:end}
 ```

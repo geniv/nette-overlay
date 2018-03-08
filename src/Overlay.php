@@ -7,7 +7,7 @@ use Nette\Localization\ITranslator;
 /**
  * Class Overlay
  *
- * @author  geniv
+ * @author  geniv, MartinFugess
  */
 class Overlay extends Control
 {

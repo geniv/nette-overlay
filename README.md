@@ -30,6 +30,8 @@ usage:
 protected function createComponentOverlay(Overlay $overlay): Overlay
 {
     //$overlay->setTemplatePath('','');
+    //$overlay->setTemplatePath('',null);
+    //$overlay->setTemplatePath(null,'');
     return $overlay;
 }
 ```

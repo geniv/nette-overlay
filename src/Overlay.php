@@ -39,16 +39,18 @@ class Overlay extends Control
     /**
      * Set template path.
      *
-     * @param $pathBegin
-     * @param $pathEnd
+     * @param null $pathBegin
+     * @param null $pathEnd
      * @return $this
      */
-    public function setTemplatePath($pathBegin, $pathEnd)
+    public function setTemplatePath($pathBegin = null, $pathEnd = null)
     {
-        $this->templatePath = [
-            'begin' => $pathBegin,
-            'end'   => $pathEnd,
-        ];
+        if ($pathBegin) {
+            $this->templatePath['begin'] = $pathBegin;
+        }
+        if ($pathEnd) {
+            $this->templatePath['end'] = $pathBegin;
+        }
         return $this;
     }
 

@@ -29,6 +29,7 @@ $nette-overlay-z-close:                     1200 !default;
 $nette-overlay-structure: (
     default,
     content-styles,
+    overflow-fix
 ) !default;
 
 
@@ -149,9 +150,11 @@ $nette-overlay-structure: (
             }
         }
     }
-    body {
-        &.nette-overlay--shown {
-            overflow: hidden;
+    @if index($nette-overlay-structure, overflow-fix) {
+        body {
+            &.nette-overlay--shown {
+                overflow: hidden;
+            }
         }
     }
 }

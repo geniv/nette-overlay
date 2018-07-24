@@ -45,8 +45,8 @@ $(document).ready(function () {
     });
 });
 
-$(document).keyup(function (e) {
-    if (e.keyCode == 27) {
+$(document).keyup(function (event) {
+    if (event.keyCode == 27) {
         netteOverlayClose();
     }
 });

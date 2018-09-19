@@ -62,3 +62,9 @@ and latte:
 ```latte
 {control overlay1:begin 'custom-layer-2'}form{control overlay1:end}
 ```
+
+JS:
+```javascript
+netteOverlayOpen([specificNetteOverlay, firstFocus, bodyOverflowFix, bodyPaddingFix]);
+netteOverlayClose();
+```

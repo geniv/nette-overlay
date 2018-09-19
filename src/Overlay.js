@@ -31,7 +31,7 @@ function netteOverlayClose() {
 }
 
 $(document).ready(function () {
-    $(".nette-overlay__open").on("click", function (event) {
+    $(".nette-overlay__open").on("click.netteoverlay", function (event) {
         event.preventDefault();
         var thisSpecific = $(this).data("specific");
         var thisFirstFocus = $(this).data("first-element-focus") ? $(this).data("first-element-focus") : false;
@@ -39,9 +39,12 @@ $(document).ready(function () {
         var thisBodyPaddingFix = $(this).data("body-padding-fix") ? $(this).data("body-padding-fix") : false;
         netteOverlayOpen(thisSpecific, thisFirstFocus, thisBodyOverflowFix, thisBodyPaddingFix);
     });
-    $(".nette-overlay__close, .nette-overlay__backdrop").on("click", function (event) {
+    $(".nette-overlay__close, .nette-overlay").on("click.netteoverlay", function (event) {
         event.preventDefault();
         netteOverlayClose();
+    });
+    $(".nette-overlay__inner").on("click.netteoverlay", function (event) {
+        event.stopPropagation();
     });
 });
 

@@ -39,7 +39,7 @@ $(document).ready(function () {
         var thisBodyPaddingFix = $(this).data("body-padding-fix") ? $(this).data("body-padding-fix") : false;
         netteOverlayOpen(thisSpecific, thisFirstFocus, thisBodyOverflowFix, thisBodyPaddingFix);
     });
-    $(".nette-overlay__close, .nette-overlay").on("click.netteoverlay", function (event) {
+    $(".nette-overlay__close, .nette-overlay, [nette-overlay-close]").on("click.netteoverlay", function (event) {
         event.preventDefault();
         netteOverlayClose();
     });

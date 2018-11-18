@@ -1,5 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
+use GeneralForm\ITemplatePath;
 use Nette\Application\UI\Control;
 use Nette\Localization\ITranslator;
 
@@ -9,11 +10,11 @@ use Nette\Localization\ITranslator;
  *
  * @author  geniv, MartinFugess
  */
-class Overlay extends Control
+class Overlay extends Control implements ITemplatePath
 {
     /** @var ITranslator */
     private $translator = null;
-    /** @var string template path */
+    /** @var string */
     private $templatePath;
 
 
@@ -39,11 +40,21 @@ class Overlay extends Control
     /**
      * Set template path.
      *
-     * @param null $pathBegin
-     * @param null $pathEnd
-     * @return $this
+     * @param string $path
      */
-    public function setTemplatePath($pathBegin = null, $pathEnd = null)
+    public function setTemplatePath(string $path)
+    {
+        $this->templatePath['begin'] = $path;
+    }
+
+
+    /**
+     * Set template path.
+     *
+     * @param string $pathBegin
+     * @param string $pathEnd
+     */
+    public function setTemplatePathBoth(string $pathBegin, string $pathEnd)
     {
         if ($pathBegin) {
             $this->templatePath['begin'] = $pathBegin;
@@ -51,17 +62,16 @@ class Overlay extends Control
         if ($pathEnd) {
             $this->templatePath['end'] = $pathBegin;
         }
-        return $this;
     }
 
 
     /**
      * Render begin.
      *
-     * @param      $name
-     * @param null $class
+     * @param string      $name
+     * @param string|null $class
      */
-    public function renderBegin($name, $class = null)
+    public function renderBegin(string $name, string $class = null)
     {
         $template = $this->getTemplate();
 

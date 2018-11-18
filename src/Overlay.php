@@ -56,12 +56,8 @@ class Overlay extends Control implements ITemplatePath
      */
     public function setTemplatePathBoth(string $pathBegin, string $pathEnd)
     {
-        if ($pathBegin) {
-            $this->templatePath['begin'] = $pathBegin;
-        }
-        if ($pathEnd) {
-            $this->templatePath['end'] = $pathBegin;
-        }
+        $this->templatePath['begin'] = $pathBegin;
+        $this->templatePath['end'] = $pathEnd;
     }
 
 

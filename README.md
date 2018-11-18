@@ -30,8 +30,8 @@ usage:
 ```php
 protected function createComponentOverlay(Overlay $overlay): Overlay
 {
-    //$overlay->setTemplatePathBoth(__DIR__.'/templates/overlayBegin.latte',__DIR__.'/templates/overlayEnd.latte');
     //$overlay->setTemplatePath(__DIR__.'/templates/overlayBegin.latte');
+    //$overlay->setTemplatePathBoth(__DIR__.'/templates/overlayBegin.latte',__DIR__.'/templates/overlayEnd.latte');
     return $overlay;
 }
 ```
@@ -49,12 +49,12 @@ content
 {control overlay:end}
 ```
 
-or extreme usage
+or extreme usage, better usage is: Multiplier
 ```php
 protected function createComponentOverlay1(Overlay $overlay): Overlay
 {
     $overlay = clone $overlay;
-    //$overlay->setTemplatePath('','');
+    //$overlay->setTemplatePath(__DIR__.'/templates/overlayBegin.latte');
     return $overlay;
 }
 ```

@@ -28,7 +28,7 @@ services:
 
 usage:
 ```php
-protected function createComponentOverlay(Overlay $overlay): Overlay
+protected function createComponentOverlay(IOverlay $overlay): IOverlay
 {
     //$overlay->setTemplatePath(__DIR__.'/templates/overlayBegin.latte');
     //$overlay->setTemplatePathBoth(__DIR__.'/templates/overlayBegin.latte',__DIR__.'/templates/overlayEnd.latte');
@@ -51,7 +51,7 @@ content
 
 or extreme usage, better usage is: Multiplier
 ```php
-protected function createComponentOverlay1(Overlay $overlay): Overlay
+protected function createComponentOverlay1(IOverlay $overlay): IOverlay
 {
     $overlay = clone $overlay;
     //$overlay->setTemplatePath(__DIR__.'/templates/overlayBegin.latte');
